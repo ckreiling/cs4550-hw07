@@ -13,7 +13,7 @@ defmodule TodoApp.Managers.Manager do
   @doc false
   def changeset(manager, attrs) do
     manager
-    |> cast(attrs, [])
-    |> validate_required([])
+    |> cast(attrs, [:user_id, :managed_id])
+    |> validate_required([:user_id, :managed_id])
   end
 end

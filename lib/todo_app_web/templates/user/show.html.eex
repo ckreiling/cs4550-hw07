@@ -1,13 +1,59 @@
-<h1>Show User</h1>
+<h1>User info</h1>
 
-<ul>
+<ul class="list-group list-group-flush">
 
-  <li>
+  <li class="list-group-item">
     <strong>Email:</strong>
-    <%= @user.email %>
+    <%= @current_user.email %>
   </li>
 
 </ul>
 
-<span><%= link "Edit", to: Routes.user_path(@conn, :edit, @user) %></span>
-<span><%= link "Back", to: Routes.user_path(@conn, :index) %></span>
+<h1>Managers</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>User ID</th>
+      <th>Email</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= Enum.map(@current_user.managers, fn user -> %>
+    <tr>
+      <td><%=user.id%></td>
+      <td><%=user.email%></td>
+      <td>
+        <%= link "Delete", to: Routes.manager_path(@conn, :delete, user), method: :delete, data: [confirm: "Are you sure?"] %>
+      </td>
+    </tr>
+<% end) %>
+  </tbody>
+</table>
+
+<h1>Underlings</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>User ID</th>
+      <th>Email</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= Enum.map(@current_user.underlings, fn user -> %>
+    <tr>
+      <td><%=user.id%></td>
+      <td><%=user.email%></td>
+      <td>
+        <%= link "Delete", to: Routes.manager_path(@conn, :delete, user), method: :delete, data: [confirm: "Are you sure?"] %>
+      </td>
+    </tr>
+<% end)%>
+  </tbody>
+</table>
+
+
+<span><%= link "New Manager", to: Routes.manager_path(@conn, :new), class: "btn btn-primary" %></span>

@@ -14,20 +14,23 @@
           <%= link "The Todo App", class: "navbar-brand", to: Routes.page_path(@conn, :index) %>
         </div>
         <div class="col-8">
-          <ul class="navbar-nav">
+          
             <%= if is_nil(@current_user) do %>
-              <li>
-                <%= link "Register", class: "nav-link", to: Routes.user_path(@conn, :new) %>
-              </li>
-              <li>
-                <%= link "Login", class: "nav-link", to: Routes.session_path(@conn, :login) %>
-              </li>
+              <ul class="navbar-nav">
+                <li>
+                  <%= link "Register", class: "nav-link", to: Routes.user_path(@conn, :new) %>
+                </li>
+                <li>
+                  <%= link "Login", class: "nav-link", to: Routes.session_path(@conn, :login) %>
+                </li>
             <% else %>
-              <li>
-                <%= link "Logout", class: "nav-link btn", to: Routes.session_path(@conn, :delete)%>
-              </li>
-            <% end %>
-          </ul>
+              <ul class="navbar-nav justify-content-between">
+                <li>
+                  <%= link "Logout", class: "nav-link btn btn-primary", to: Routes.session_path(@conn, :delete)%>
+                </li>
+                <li class="navbar-text"> <%= link "Profile", to: "/me" %></li>
+              <% end %>
+            </ul>
         </a>
       </nav>
 

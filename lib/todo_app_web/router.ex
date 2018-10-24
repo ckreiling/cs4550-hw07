@@ -22,6 +22,7 @@ defmodule TodoAppWeb.Router do
     post "/login", SessionController, :create
     get "/logout", SessionController, :delete
     get "/register", UserController, :new
+    get "/me", UserController, :show
     resources "/users", UserController
     resources "/managed", ManagerController
     resources "/todo-items", TodoItemController

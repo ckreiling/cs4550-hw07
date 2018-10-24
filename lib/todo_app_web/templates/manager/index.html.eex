@@ -1,24 +1,50 @@
-<h1>Listing Managers</h1>
+<h1>Managers</h1>
 
-<table>
+<table class="table">
   <thead>
     <tr>
-
+      <th>User ID</th>
+      <th>Email</th>
       <th></th>
     </tr>
   </thead>
   <tbody>
-<%= for manager <- @managers do %>
+<%= Enum.map(@current_user.managers, fn user -> %>
     <tr>
-
+      <td><%=user.id%></td>
+      <td><%=user.email%></td>
       <td>
-        <%= link "Show", to: Routes.manager_path(@conn, :show, manager) %>
-        <%= link "Edit", to: Routes.manager_path(@conn, :edit, manager) %>
-        <%= link "Delete", to: Routes.manager_path(@conn, :delete, manager), method: :delete, data: [confirm: "Are you sure?"] %>
+        <%= link "Show", to: Routes.user_path(@conn, :show, user) %>
+        <%= link "Delete", to: Routes.manager_path(@conn, :delete, user), method: :delete, data: [confirm: "Are you sure?"] %>
       </td>
     </tr>
-<% end %>
+<% end) %>
   </tbody>
 </table>
+
+<h1>Underlings</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>User ID</th>
+      <th>Email</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= Enum.map(@current_user.underlings, fn user -> %>
+    <tr>
+      <td><%=user.id%></td>
+      <td><%=user.email%></td>
+      <td>
+        <%= link "Show", to: Routes.user_path(@conn, :show, user) %>
+        <%= link "Delete", to: Routes.manager_path(@conn, :delete, user), method: :delete, data: [confirm: "Are you sure?"] %>
+      </td>
+    </tr>
+<% end)%>
+  </tbody>
+</table>
+
 
 <span><%= link "New Manager", to: Routes.manager_path(@conn, :new) %></span>

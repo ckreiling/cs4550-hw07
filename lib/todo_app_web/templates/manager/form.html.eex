@@ -5,7 +5,11 @@
     </div>
   <% end %>
 
-  <div>
-    <%= submit "Save" %>
+  <div class="form-group">
+    <%= label f, :email %>
+    <%= text_input f, :email %>
+    <%= error_tag f, :email %>
   </div>
+
+  <%= submit "Save", class: "btn btn-primary" %>
 <% end %>

@@ -26,9 +26,8 @@ defmodule TodoAppWeb.UserController do
     end
   end
 
-  def show(conn, %{"id" => id}) do
-    user = Users.get_user!(id)
-    render(conn, "show.html", user: user)
+  def show(conn, _params) do
+    render(conn, "show.html")
   end
 
   def edit(conn, %{"id" => id}) do
