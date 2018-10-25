@@ -12,7 +12,7 @@ use Mix.Config
 config :todo_app, TodoAppWeb.Endpoint,
   server: true,
   root: ".",
-  version: Application.spec(:phoenix_distillery, :vsn),
+  version: Application.spec(:todo_app, :vsn),
   http: [:inet6, port: {:system, "PORT"}],
   url: [host: "localhost", port: {:system, "PORT"}],
   cache_static_manifest: "priv/static/cache_manifest.json"
