@@ -80,3 +80,11 @@ secret = File.read!(path)
 
 config :todo_app2, TodoAppWeb.Endpoint,
   secret_key_base: secret
+
+  # Configure your database
+config :todo_app2, TodoAppWeb.Repo,
+username: "postgres",
+password: "postgres",
+database: "todo_app_prod",
+hostname: "localhost",
+pool_size: 10
