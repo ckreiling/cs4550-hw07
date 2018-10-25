@@ -14,7 +14,7 @@ config :todo_app, TodoAppWeb.Endpoint,
   root: ".",
   version: Application.spec(:phoenix_distillery, :vsn),
   http: [:inet6, port: {:system, "PORT"}],
-  url: [host: "tasks2.porchboys.com", port: {:system, "PORT"}],
+  url: [host: "localhost", port: {:system, "PORT"}],
   cache_static_manifest: "priv/static/cache_manifest.json"
 
 # Do not print debug messages in production
