@@ -13,7 +13,7 @@ config :todo_app, TodoAppWeb.Endpoint,
   server: true,
   root: ".",
   version: Application.spec(:phoenix_distillery, :vsn),
-  http: [:inet6, port: {:system, "PORT"}],
+  http: [:inet6, port: System.get_env("PORT")],
   url: [host: "tasks2.porchboys.com", port: 80],
   cache_static_manifest: "priv/static/cache_manifest.json"
 
