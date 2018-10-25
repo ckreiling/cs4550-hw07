@@ -19,7 +19,7 @@ defmodule TodoAppWeb.TodoItemController do
       {:ok, todo_item} ->
         conn
         |> put_flash(:info, "Todo item created successfully.")
-        |> redirect(to: Routes.todo_item_path(conn, :show, todo_item))
+        |> redirect(to: Routes.todo_item_path(conn, :show_underlings_todos))
 
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "new.html", changeset: changeset)
@@ -56,7 +56,7 @@ defmodule TodoAppWeb.TodoItemController do
       {:ok, todo_item} ->
         conn
         |> put_flash(:info, "Todo item updated successfully.")
-        |> redirect(to: Routes.todo_item_path(conn, :show, todo_item))
+        |> redirect(to: Routes.todo_item_path(conn, :show_underlings_todos))
 
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "edit.html", todo_item: todo_item, changeset: changeset)

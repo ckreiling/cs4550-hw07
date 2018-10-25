@@ -36,7 +36,7 @@ defmodule TodoAppWeb.Router do
     get "/underlings", TodoItemController, :show_underlings_todos
     get "/logout", SessionController, :delete
     resources "/managed", ManagerController, only: [:index, :new, :edit, :delete, :create]
-    resources "/todo-items", TodoItemController, only: [:edit, :new]
+    resources "/todo-items", TodoItemController, only: [:edit, :new, :create, :update]
   end
 
   # Other scopes may use custom stacks.

@@ -6,6 +6,7 @@ defmodule TodoApp.TodoItems.TodoItem do
   schema "todo_items" do
     field :description, :string
     field :title, :string
+    field :completed, :boolean, default: false
 
     belongs_to :user, TodoApp.Users.User, foreign_key: :assigned_to
 
@@ -15,7 +16,7 @@ defmodule TodoApp.TodoItems.TodoItem do
   @doc false
   def changeset(todo_item, attrs) do
     todo_item
-    |> cast(attrs, [:title, :description, :assigned_to])
+    |> cast(attrs, [:title, :description, :completed, :assigned_to])
     |> validate_required([:title, :description])
   end
 end

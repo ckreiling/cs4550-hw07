@@ -6,6 +6,7 @@
       <th>Title</th>
       <th>Description</th>
       <th>Assigned to</th>
+      <th>Completed</th>
       <th></th>
     </tr>
   </thead>
@@ -15,6 +16,7 @@
       <td><%= todo_item.title %></td>
       <td><%= todo_item.description %></td>
       <td><%= todo_item.user.email %></td>
+      <td><%= todo_item.completed %></td>
       <td>
         <%= link "Edit", to: Routes.todo_item_path(@conn, :edit, todo_item) %>
       </td>

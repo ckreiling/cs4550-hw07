@@ -15,6 +15,7 @@
       <td><%= todo_item.title %></td>
       <td><%= todo_item.description %></td>
       <td><%= todo_item.completed %></td>
+      <td><%= link "Edit", to: Routes.todo_item_path(@conn, :edit, todo_item.id) %></td>
     </tr>
 <% end) %>
   </tbody>
