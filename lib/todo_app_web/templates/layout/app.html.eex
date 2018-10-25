@@ -26,9 +26,15 @@
             <% else %>
               <ul class="navbar-nav justify-content-between">
                 <li>
+                  <%= link "My Todo List", class: "nav-link", to: Routes.todo_item_path(@conn, :my_todos)%>
+                </li>
+                <li>
+                  <%= link "My Underlings' Todo List", class: "nav-link", to: Routes.todo_item_path(@conn, :show_underlings_todos)%>
+                </li>
+                <li>
                   <%= link "Logout", class: "nav-link btn btn-primary", to: Routes.session_path(@conn, :delete)%>
                 </li>
-                <li class="navbar-text"> <%= link "Profile", to: "/me" %></li>
+                <li class="navbar-text"> <%= link "Profile", to: Routes.user_path(@conn, :me) %></li>
               <% end %>
             </ul>
         </a>

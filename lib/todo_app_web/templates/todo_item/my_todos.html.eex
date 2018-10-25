@@ -1,0 +1,21 @@
+<h1>Your todo items</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Completed</th>=
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= Enum.map(@current_user.todo_items, fn todo_item -> %>
+    <tr>
+      <td><%= todo_item.title %></td>
+      <td><%= todo_item.description %></td>
+      <td><%= todo_item.completed %></td>
+    </tr>
+<% end) %>
+  </tbody>
+</table>

@@ -13,11 +13,11 @@ defmodule TodoAppWeb.SessionController do
       conn
       |> put_session(:user_id, user.id)
       |> put_flash(:info, "Welcome back #{user.email}")
-      |> redirect(to: Routes.todo_item_path(conn, :index))
+      |> redirect(to: Routes.user_path(conn, :me))
     else
       conn
       |> put_flash(:error, "There is no Email with this account.")
-      |> login(conn)
+      |> redirect(to: Routes.session_path(conn, :login))
     end
   end
 

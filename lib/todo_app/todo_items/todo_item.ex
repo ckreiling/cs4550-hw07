@@ -15,7 +15,7 @@ defmodule TodoApp.TodoItems.TodoItem do
   @doc false
   def changeset(todo_item, attrs) do
     todo_item
-    |> cast(attrs, [:title, :description])
+    |> cast(attrs, [:title, :description, :assigned_to])
     |> validate_required([:title, :description])
   end
 end

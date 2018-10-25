@@ -1,0 +1,26 @@
+<h1>Your underlings' todo items</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Assigned to</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= Enum.map(@todos, fn todo_item -> %>
+    <tr>
+      <td><%= todo_item.title %></td>
+      <td><%= todo_item.description %></td>
+      <td><%= todo_item.user.email %></td>
+      <td>
+        <%= link "Edit", to: Routes.todo_item_path(@conn, :edit, todo_item) %>
+      </td>
+    </tr>
+<% end) %>
+  </tbody>
+</table>
+
+<span><%= link "New Todo item", class: "btn btn-primary", to: Routes.todo_item_path(@conn, :new) %></span>

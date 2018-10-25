@@ -10,6 +10,10 @@ defmodule TodoAppWeb.Router do
     plug TodoAppWeb.Plugs.FetchUserFromSession
   end
 
+  pipeline :authenticate do
+    plug TodoAppWeb.Plugs.Authenticate
+  end
+
   pipeline :api do
     plug :accepts, ["json"]
   end
@@ -20,12 +24,19 @@ defmodule TodoAppWeb.Router do
     get "/", PageController, :index
     get "/login", SessionController, :login
     post "/login", SessionController, :create
-    get "/logout", SessionController, :delete
     get "/register", UserController, :new
-    get "/me", UserController, :show
-    resources "/users", UserController
-    resources "/managed", ManagerController
-    resources "/todo-items", TodoItemController
+    post "/register", UserController, :create
+  end
+
+  scope "/app", TodoAppWeb do
+    pipe_through [:browser, :authenticate]
+
+    get "/me", UserController, :me
+    get "/my-todos", TodoItemController, :my_todos
+    get "/underlings", TodoItemController, :show_underlings_todos
+    get "/logout", SessionController, :delete
+    resources "/managed", ManagerController, only: [:index, :new, :edit, :delete, :create]
+    resources "/todo-items", TodoItemController, only: [:edit, :new]
   end
 
   # Other scopes may use custom stacks.

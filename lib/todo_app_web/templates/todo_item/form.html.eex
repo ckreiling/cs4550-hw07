@@ -4,16 +4,21 @@
       <p>Oops, something went wrong! Please check the errors below.</p>
     </div>
   <% end %>
-
+  <div class="form-group">
   <%= label f, :title %>
   <%= text_input f, :title %>
   <%= error_tag f, :title %>
-
+</div>
+<div class="form-group">
   <%= label f, :description %>
   <%= textarea f, :description %>
   <%= error_tag f, :description %>
+</div>
 
-  <div>
-    <%= submit "Save" %>
-  </div>
+<div class="form-group">
+  <%= label f, :assigned_to %>
+  <%= select f, :assigned_to, Enum.map(@current_user.underlings, &([key: &1.email, value: &1.id])) %>
+  <%= error_tag f, :assigned_to %>
+</div>
+    <%= submit "Submit", class: "btn btn-primary" %>
 <% end %>

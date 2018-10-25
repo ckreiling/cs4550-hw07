@@ -26,6 +26,18 @@ defmodule TodoAppWeb.TodoItemController do
     end
   end
 
+  def my_todos(conn, _params) do
+    render(conn, "my_todos.html")
+  end
+
+  def show_underlings_todos(conn, _params) do
+    user = conn.assigns[:current_user]
+    todos = Enum.flat_map(user.underlings, fn u -> 
+      TodoItems.get_todos_for_user(u.id)
+    end)
+    render(conn, "underlings.html", todos: todos)
+  end
+
   def show(conn, %{"id" => id}) do
     todo_item = TodoItems.get_todo_item!(id)
     render(conn, "show.html", todo_item: todo_item)

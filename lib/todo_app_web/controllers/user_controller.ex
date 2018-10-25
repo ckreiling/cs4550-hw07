@@ -19,17 +19,18 @@ defmodule TodoAppWeb.UserController do
       {:ok, user} ->
         conn
         |> put_flash(:info, "User created successfully.")
-        |> redirect(to: Routes.user_path(conn, :show, user))
+        |> put_session(:user_id, user.id)
+        |> redirect(to: Routes.user_path(conn, :me))
 
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "new.html", changeset: changeset)
     end
   end
 
-  def show(conn, _params) do
+  def me(conn, _parmas) do
     render(conn, "show.html")
   end
-
+  
   def edit(conn, %{"id" => id}) do
     user = Users.get_user!(id)
     changeset = Users.change_user(user)

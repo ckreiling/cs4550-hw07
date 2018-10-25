@@ -56,4 +56,4 @@
 </table>
 
 
-<span><%= link "New Manager", to: Routes.manager_path(@conn, :new), class: "btn btn-primary" %></span>
+<span><%= link "New Underling", to: Routes.manager_path(@conn, :new), class: "btn btn-primary" %></span>

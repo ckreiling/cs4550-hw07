@@ -40,6 +40,13 @@ defmodule TodoApp.TodoItems do
       where: t.id == ^id,
       preload: [:user]
   end
+
+  def get_todos_for_user(id) do
+    Repo.all from t in TodoItem,
+      where: t.assigned_to == ^id,
+      preload: [:user]
+  end
+
   @doc """
   Creates a todo_item.
 
