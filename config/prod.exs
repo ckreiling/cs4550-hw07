@@ -82,7 +82,7 @@ config :todo_app, TodoAppWeb.Endpoint,
   secret_key_base: secret
 
   # Configure your database
-config :todo_app, TodoAppWeb.Repo,
+config :todo_app, TodoApp.Repo,
 username: "postgres",
 password: "postgres",
 database: "todo_app_prod",
