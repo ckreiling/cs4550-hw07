@@ -11,6 +11,7 @@ use Mix.Config
 # before starting your production server.
 config :todo_app, TodoAppWeb.Endpoint,
   server: true,
+  root: ".",
   version: Application.spec(:phoenix_distillery, :vsn),
   http: [:inet6, port: {:system, "PORT"}],
   url: [host: "tasks2.porchboys.com", port: 80],
