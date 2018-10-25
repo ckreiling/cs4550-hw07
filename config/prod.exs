@@ -13,8 +13,8 @@ config :todo_app, TodoAppWeb.Endpoint,
   server: true,
   root: ".",
   version: Application.spec(:todo_app, :vsn),
-  http: [:inet6, port: {:system, "PORT"}],
-  url: [host: "localhost", port: {:system, "PORT"}],
+  http: [:inet6, port: System.get_env("PORT")],
+  url: [host: "localhost", System.get_env("PORT")],
   cache_static_manifest: "priv/static/cache_manifest.json"
 
 # Do not print debug messages in production
