@@ -78,11 +78,11 @@ unless File.exists?(path) do
 end
 secret = File.read!(path)
 
-config :todo_app2, TodoAppWeb.Endpoint,
+config :todo_app, TodoAppWeb.Endpoint,
   secret_key_base: secret
 
   # Configure your database
-config :todo_app2, TodoAppWeb.Repo,
+config :todo_app, TodoAppWeb.Repo,
 username: "postgres",
 password: "postgres",
 database: "todo_app_prod",
